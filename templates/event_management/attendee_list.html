@@ -1,0 +1,67 @@
+{% extends 'event_management/base.html' %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="spacer10"></div>
+    <div class="row">
+        <div class="col-4"><input id="myInput" class='form-control mr-sm-2 col-12' type="text" placeholder="Search.."></div>
+        <div class="col-3"><h6>Event Max Capacity: {{ event.max_capacity }}</h6></div>
+        <div class="col-3"><h6>Total Attendees: {{ total_attendees }}</h6></div>
+{#        <div class="col-2"><h6>Total Collected: ${{ total_collected }}</h6></div>#}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table id="tableToSort" class="table table-sm tablesorter">
+                <thread>
+                    <tr>
+                        <th>Name</th>
+                        <th>Guests</th>
+                        <th>Signup Date</th>
+                        {% if event.fee %}
+                            <th>Amount Paid</th>
+                        {% endif %}
+                        <th>Actions</th>
+                    </tr>
+                </thread>
+                <tbody id="myTable">
+                    {% for attendee in attendees %}
+                        <tr>
+                            <td>{{ attendee.first_name }} {{ attendee.last_name }} ({{ attendee.email }})</td>
+                            <td>{{ attendee.guests }}{% if attendee.guests_name %}: {{ attendee.guests_name }} {% endif %}</td>
+                            <td>{{ attendee.registration_date|date:'m/d/Y' }}</td>
+                            {% if event.fee %}
+                                <td>{{ attendee.registration_paid }}</td>
+                            {% endif %}
+                            <td>
+                                {% if attendee.active %}
+                                    <a href="{% url 'change_attendee_status' attendee.id %}" class="btn-sm btn-outline-success" data-toggle="tooltip" data-placement="left" title="Click to deactivate"><i class="far fa-check-square fa-1" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href="{% url 'change_attendee_status' attendee.id %}" class="btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="left" title="Click to activate"><i class="far fa-square fa-1" aria-hidden="true"></i></a>
+                                {% endif %}
+                                <div class="btn-group" role="group" aria-label="Action buttons">
+                                    <a href="{% url 'attendee_trash' attendee.id %}" class="btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="left" title="Remove"><i class="fas fa-trash-alt fa-3" aria-hidden="true"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
+{% endblock content %}

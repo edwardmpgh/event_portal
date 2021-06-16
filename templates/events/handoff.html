@@ -1,0 +1,46 @@
+{% extends 'events/base.html' %}
+{% load staticfiles %}
+{% block page_title %}{{ title }}{% endblock page_title %}
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h1 class="cmu_red_text cmu-h1">{{ event.name}}</h1>
+                        <hr class="hr hr--small">
+                        <h6 class="cmu_red_text cmu-h6">WHEN</h6>
+                        <p>{{ event.start_date|date:'F j, Y' }}</p>
+                        <p>{{ event.start_time}}
+                            {% if event.end_time %}
+                                - {{ event.end_time }}
+                            {% endif %}</p>
+                        <h6 class="cmu_red_text cmu-h6">WHERE</h6>
+                        <p>{{ event.location_name }}</p>
+                        <p>{{ event.location_address }} {% if event.location_map_url %} <a class="cmu_red_text" href="{{ event.location_map_url }}">(map)</a>{% endif %}</p>
+                        <h6 class="cmu_red_text cmu-h6">PAYMENT</h6>
+                            <b>Total Attendees</b>: {{ total_attendee }}<br/>
+                            <b>Total Cost</b>: ${{ total_cost }} (${{ event.fee }} per attendee)<br/><br/>
+                        <form method="post" id="form1" enctype=multipart/form-data action="{{ storefront_url }}">
+                            {% load crispy_forms_tags %}
+                            {% crispy form %}
+                        </form>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+
+{% endblock content %}

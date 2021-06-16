@@ -1,0 +1,12 @@
+Django==2.1.8
+django-ckeditor==5.6.1
+django-crispy-forms==1.7.2
+django-js-asset==1.2.2
+django-shibboleth-remoteuser==0.11a2
+mod-wsgi==4.6.5
+Pillow==5.4.1
+psycopg2==2.7.6.1
+python-barcode==0.9.0
+pytz==2018.9
+reportlab==3.5.18
+sqlparse==0.3.0

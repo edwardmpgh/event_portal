@@ -1,0 +1,22 @@
+{% extends 'event_management/base.html' %}
+{% block head-extra %}{% endblock head-extra %}
+{% block page_title %}{{ title }}{% endblock page_title %}
+{% block page_subtitle %}{% endblock page_subtitle %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h3>{{ form_title }}</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>{{ confirmation_info|linebreaks}}</p>
+        <button class="btn btn-danger" name="delete" type="submit">{{ button_yes_title }}</button><button class="btn btn-success" name="cancel" type="cancel" role="button">Cancel</button>
+    </form>
+
+{% endblock content %}

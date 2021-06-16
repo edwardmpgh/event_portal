@@ -1,0 +1,30 @@
+{% extends 'event_management/base.html' %}
+{% load staticfiles %}
+{% block page_title %}{{ title }}{% endblock page_title %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <script>
+        $(document).ready(
+            function() {
+            $('#time1').clockface();
+            $('#time2').clockface();
+            }
+        );
+    </script>
+
+    <h3>{{ form_title }}</h3>
+    <form method="post" id="form1" enctype=multipart/form-data>
+        {% load crispy_forms_tags %}
+        {% csrf_token %}
+        {% crispy form %}
+        <br />
+        <button class="btn btn-outline-primary" type="submit" form="form1" value="Submit">{{ button_title }}</button>
+    </form>
+
+{% endblock content %}

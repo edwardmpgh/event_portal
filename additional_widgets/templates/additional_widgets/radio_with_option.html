@@ -1,0 +1,64 @@
+{#{% with id=widget.attrs.id %}#}
+{#    <ul#}
+{#        {% if id %}#}
+{#            id="{{ id }}"#}
+{#        {% endif %}#}
+{#        {% if widget.attrs.class %}#}
+{#            class="{{ widget.attrs.class }}"#}
+{#        {% endif %}#}
+{#    >#}
+{#        {% for group, options, index in widget.optgroups %}#}
+{#            {% if group %}#}
+{#                <li>{{ group }}<ul{% if id %} id="{{ id }}_{{ index }}"{% endif %}>#}
+{#            {% endif %}#}
+{#            {% for option in options %}#}
+{#                <div class="form-check">#}
+{#                    <input type="radio" id="{{ widget.id }}" name="{{ widget.name }}" class="form-check-input" value="{{ widget.value|stringformat:'s' }}">#}
+{#                    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}class="form-check-input">#}
+{#                    <label class="form-check-label" for="{{ widget.id }}">{{ widget.name }}</label>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#            {% if group %}#}
+{#                </ul></li>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endwith %}#}
+
+
+
+
+
+{% with id=widget.attrs.id %}
+    <ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
+        {% for group, options, index in widget.optgroups %}
+            {% if group %}
+                <li>{{ group }}<ul{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+            {% endif %}
+            {% for option in options %}
+                <li>
+                    {% if widget.wrap_label %}
+                        <label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>
+                    {% endif %}
+
+                    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
+                        {% for name, value in widget.attrs.items %}
+                            {% if value is not False %}
+                                {{ name }}
+                                {% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    >
+
+                    {% if widget.wrap_label %}
+                        {{ widget.label }}</label>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% if group %}</ul></li>{% endif %}{% endfor %}
+    </ul>{% endwith %}
+
+
+
+
+

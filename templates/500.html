@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+{% load staticfiles %}
+{% block page_title %}{{ title }}{% endblock page_title %}
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <h2 class="card-header cmu_red_bg text-white">500</h2>
+                <div class="card-body">
+                    <h5 class="card-title">Application Error.</h5>
+                    <p class="card-text">
+                        An unexpected application error has occurred. Please email <a href="mailto:heinz-computing@andrew.cmu.edu">Heinz Computing</a> to report this error.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+{% endblock content %}

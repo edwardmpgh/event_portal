@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    background: url("/static/images/lib_night.JPG") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body,#bodyTable,#bodyCell{
+            height:100%;
+            margin:0;
+            padding:0;
+            width:100%;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+}
+
+.spacer10 {
+    height: 10px;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    padding: 10px;
+    border: 0;
+    display: block;
+}
+
+.spacer5 {
+    height: 15px;
+    width: 100%;
+    font-size: 0px;
+    margin: 0;
+    padding: 15px;
+    border: 0;
+    display: block;
+}
+
+.col-back {
+    background-color: #F0F8FF;
+}
+
+
+.header {
+    background: #000 url("/static/images/hnz_col_logo_white_w_padding.png") no-repeat;
+    height: 88px;
+}
+
+.header-text {
+    color: #000000;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    vertical-align: middle;
+}
+
+.subheader-text {
+    color: #000000;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    vertical-align: middle;
+}
+
+.cmu_red_bg {
+    background-color: #ba0000;
+}
+
+.background-white  {
+    background-color:#ffffff !important;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px white inset;
+}
+
+.text-white {
+    color: #ffffff;
+}

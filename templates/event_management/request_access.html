@@ -1,0 +1,27 @@
+{% extends 'event_management/base.html' %}
+{% block content %}
+
+    {% if email_sent %}
+        <div class="card">
+          <div class="card-header bg-success">
+            Access Request Sent
+          </div>
+          <div class="card-body">
+            <p class="card-text">Your access request has been sent to the Heinz Web team.
+            If you do not hear from them within 24 hours or next business day, please contact <a href="mailto:heinz-computing@andrew.cmu.edu">Heinz-Computing@andrew.cmu.edu</a>
+            </p>
+          </div>
+        </div>
+    {% else %}
+        <div class="card">
+          <div class="card-header bg-warning">
+            Access Request Error
+          </div>
+          <div class="card-body">
+            <p class="card-text">There was a problem with your access request. Please contact please contact <a href="mailto:heinz-computing@andrew.cmu.edu">Heinz-Computing@andrew.cmu.edu</a>
+             to request access to the Heinz event portal.</p>
+          </div>
+        </div>
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,134 @@
+{% extends 'event_management/base.html' %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-outline-primary float-left" href="{% url 'admin_index' %}" role="button">Back</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            Event Image:
+        </div>
+        <div class="col-md-10">
+            {% if event.event_image %}
+                <img src="{{ event.event_image.url }}">
+            {% endif %}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Name:
+        </div>
+        <div class="col-md-10">
+            {{ event.name }}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Description:
+        </div>
+        <div class="col-md-10">
+            {{ event.description }}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Date:
+        </div>
+        <div class="col-md-10">
+            Start: {{ event.start_date }} {{ event.start_time }}
+            {% if event.end_date %}
+                <br />End: {{ event.end_date }} {{ event.start_date }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Signup Date:
+        </div>
+        <div class="col-md-10">
+            {{ event.sign_up }}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Event Page URL:
+        </div>
+        <div class="col-md-10">
+            <a href="{{ base_url }}{{ event.url }}">{{ base_url }}{{ event.url }}</a>
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Status:
+        </div>
+        <div class="col-md-10">
+            {% if event.active %}
+                <div class="alert alert-success" role="alert">
+                    Live
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Event is not active and not publicly available.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Contact Information
+        </div>
+        <div class="col-md-10">
+            {{ event.contact_name }} &#60;{{ event.contact_email }}&#62;
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Storefront:
+        </div>
+        <div class="col-md-10">
+            Store: {{ event.storefront }}<br />
+            {% if event.storefront_itemcode %}
+                Item Code: {{ event.storefront_itemcode }}
+            {% endif %}
+            {% if event.fee %}
+                Fee: {{ event.fee }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+            Event Form:
+        </div>
+        <div class="col-md-10">
+            {{ event.event_form }}<br />
+            <img src="{{ event.event_form.form_image.url }}">
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-10">
+
+        </div>
+    </div>
+    <div class="p-2"></div>
+{% endblock content %}

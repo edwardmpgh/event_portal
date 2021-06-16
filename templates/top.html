@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img class="d-inline-block align-top" src="{% static 'images/logo.png' %}" alt="Heinz College logo"></a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+           {% if app_page == 'events' %} <span class="sr-only">(current)</span>
+                <li class="nav-item active">
+            {% else %}
+                <li class="nav-item">
+            {% endif %}
+                <a class="nav-link" href="{% url 'event_index' %}">Events</a>
+            </li>
+            {% if request.user.is_staff %}
+                {% if app_page == 'management' %} <span class="sr-only">(current)</span>
+                    <li class="nav-item active">
+                {% else %}
+                    <li class="nav-item">
+                {% endif %}
+                    <a class="nav-link" href="{% url 'admin_index' %}">Manage</a>
+                </li>
+            {% endif %}
+            {% if request.user.is_superuser %}
+                {% if app_page == 'storefront' %} <span class="sr-only">(current)</span>
+                    <li class="nav-item active">
+                {% else %}
+                    <li class="nav-item">
+                {% endif %}
+                    <a class="nav-link" href="{% url 'storefront_list' %}">Storefronts</a>
+                </li>
+                <li><a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Administration</a></li>
+            {% endif %}
+
+        </ul>
+        {% if request.user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mindcontrol.heinz.cmu.edu/display/HCIS/Heinz+College+Event+Signup+Portal" target="_blank">Help</a>
+                </li>
+            </ul>
+        {% endif %}
+    </div>
+</nav>

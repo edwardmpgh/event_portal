@@ -1,0 +1,67 @@
+{% extends 'events/base_email.html' %}
+{% block head-extra %}{% endblock head-extra %}
+{% block content %}
+
+        <h1 class="cmu_red_text cmu-h1">{{ event.name}}</h1>
+        {{ event.start_date|date:'F j, Y' }} at {{ event.start_time}}
+        {% if event.end_date %} to {{ event.end_date|date:'F j, Y' }} {% if event.end_time %} at {{ event.end_time }} {% endif %}
+
+        {% elif event.end_time %}
+            until {{ event.end_time }}
+        {% endif %}
+
+        <p>{{ event.location_name }}<br/>{{ event.location_address }}</p>
+        <b>Registration ID</b>: {{ registration.registration_number }}<br />
+        <b>Registration Date</b>: {{ registration.registration_date|date:"SHORT_DATE_FORMAT" }}<br /><br />
+        <b>Attendee Information:</b><br/>
+        {{ registration.first_name }} {{ registration.last_name }}<br />
+        {% if registration.institution %}{{ registration.institution }}<br />{% endif %}
+        {% if registration.phone %}
+            {{ registration.phone }}<br/>
+        {% endif %}
+        {{ registration.email }}<br /><br />
+        {% if registration.dietary_needs %}<b>Dietary Needs</b>: {{ registration.dietary_needs }}<br /><br />{% endif %}
+        {% if registration.guests %}
+            <b>Guest Attending</b>: {{ registration.guests }}<br/>
+            <b>Guest Name(s)</b>: {{ registration.guests_name }}
+        {% endif %}
+        <br/><br/>
+
+        {% if event.fee %}
+            <b>Registration Fee</b>:<br/>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Registration:</td>
+                        <td>${{ registration.registration_fee }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Paid:</td>
+                        <td>${{ registration.registration_paid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Balance:</td>
+                        <td>${{ balance }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Refunds</h3>
+            {%  if event.refund_policy %}
+                <p>{{ event.refund_policy|safe }}</p>
+            {% else %}
+                <p>For refunds, please contact <a href="mailto:{{ event.contact_email }}">{{ event.contact_name }}</a>.</p>
+            {% endif %}
+        {% else %}
+            <b>Registration Fee</b>: Free
+        {% endif %}
+        <br/><br/>
+        {% if event.confirmation_text %}
+            {{ event.confirmation_text|safe }}
+        {% else %}
+            <p>Thank you for registering for the {{ event.name }}. We look forward to seeing you.</p>
+            <p>To make changes to your registration, please contact <a href="mailto:{{ event.contact_email }}">{{ event.contact_name }}</a>.</p>
+            <p>We will send you an email confirmation shortly.</p>
+        {% endif %}
+
+
+{% endblock content %}

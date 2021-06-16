@@ -1,0 +1,37 @@
+{% block content %}
+
+{{ event.name }}
+{{ event.start_date|date:'F j, Y'  }}
+{{ event.start_time }}{% if event.end_time %} to {{ event.end_time }}{% endif %}
+
+Location:
+   {{ event.location_name }}
+   {{ event.location_address }}
+
+Registration Information:
+   Registration ID: {{ registration.registration_number }}
+   Registration Date: {{ registration.registration_date|date:'F j, Y' }}
+
+Attendee Information:
+   {{ registration.first_name }} {{ registration.last_name }}
+   {{ registration.email }}
+   {% if registration.institution %}{{ registration.institution }}{% endif %}
+   {% if registration.phone %}{{ registration.phone }}{% endif %}
+   {% if registration.guests %}Guest Attending: {{ registration.guests }}
+   Guest Name(s): {{ registration.guests_name }}{% endif %}
+
+   {% if registration.dietary_needs %}Dietary Needs: {{ registration.dietary_needs }}{% endif %}
+
+Registration Fee:
+   {% if event.fee %}
+   Registration: ${{ registration.registration_fee }}
+   Total Paid: ${{ registration.registration_paid}}
+   Balance: ${{ balance }}
+
+Refunds:
+   {%  if event.refund_policy %} {{ event.refund_policy|striptags }}{% else %}For refunds, please contact {{ event.contact_name }} at {{ event.contact_email }}.{% endif %}
+   {% else %} Free{% endif %}
+
+{% if event.confirmation_text %}{{ event.confirmation_text|striptags }}{% else %}Thank you for registering for the {{ event.name }}. We look forward to seeing you. To make changes to your registration, please contact {{ event.contact_name }} at {{ event.contact_email }}. We will send you an email confirmation shortly.{% endif %}
+
+{% endblock content %}

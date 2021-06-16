@@ -1,0 +1,53 @@
+{% extends 'reg_base/base.html' %}
+{% block head-extra %}{% endblock head-extra %}
+{% block page_title %}{{ title }}{% endblock page_title %}
+{% block content %}
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h2>{{ page_title }}</h2>
+        <p>
+            Registration ID: {{ registration.registration_number }}<br />
+            Registration Date: {{ registration.registration_date|date:"SHORT_DATE_FORMAT" }}<br /><br />
+            {{ registration.first_name }} {{ registration.last_name }}<br />
+            {{ registration.institution }}<br />
+            {{ registration.email }}<br /><br />
+            Attending reception on May 23rd: {% if registration.reception %} Yes {% else %} No {% endif %}<br />
+            Attending dinner on May 24th: {% if registration.dinner %} Yes {% else %} No {% endif %}<br />
+            Dietary Needs: {{ registration.dietary_needs }}<br /><br />
+            <table class="table">
+                <thread>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Item Total</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr>
+                        <td>Registration: {{ registration.get_registration_type_display }}</td>
+                        <td>${{ registration.registration_fee }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Paid:</td>
+                        <td>${{ registration.registration_paid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Balance:</td>
+                        <td>${{ balance }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <p>
+            Thank you for registering for the {{ header_title }}. We look forward to seeing you in Pittsburgh, PA.
+            Visitor information including parking and maps, can be found on the <a href="https://www.cmu.edu/visit/maps-parking-transportation.html">Carnegie Mellon University Visitors site</a>.
+        </p>
+        <p>
+            To make changes to your registration, please contact <a href="mailto:pstraw@andrew.cmu.edu">Alessandro Acquisti</a>.
+        </p>
+        <p>
+            We will send you an email confirmation shortly.
+        </p>
+        <h3>Refunds</h3>
+        <p>If you have to cancel your paid registration, you will get 80% back until 30 days before the start of the event. In all other cases, the financial responsibilities of the participant remain fully effective. To cancel your registration, please contact <a href="mailto:pstraw@andrew.cmu.edu">Tricia Straw</a></p>
+    </div>
+    <div class="col-2"></div>
+{% endblock content %}

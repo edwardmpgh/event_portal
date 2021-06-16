@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<header class="global-header" id="global-header" style="height: auto !important;">
+
+<div class="row">
+    <div class="col-3">
+        <div class="logo"><a aria-label="Carnegie Mellon University Heinz College" href="https://www.heinz.cmu.edu" title="Carnegie Mellon University Heinz College"><img src="{% static 'images/hnz_col_logo_white_w_padding.png' %}" alt="Carnegie Mellon University Heinz College"></a></div>
+
+    </div>
+    <div class="col-9">
+        <button aria-label="Open Menu" class="hamburger-menu" id="js-hamburger-menu" title="Open Menu"> <svg class="icon icon-hamburger"><use xlink:href="#icon-hamburger" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg> </button><nav class="slide-menu" id="js-slide-menu"><button aria-label="Close Menu" class="slide-menu__close-menu-trigger" id="js-slide-menu__close-menu-trigger" title="Close Menu"> <svg class="icon icon-x"><use xlink:href="#icon-x" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg> </button><form action="/search" autocomplete="off" class="global-search-mobile" method="get" name="global-search-mobile"><input id="client" name="client" type="hidden" value="heinz_frontend"> <input id="output" name="output" type="hidden" value="xml_no_dtd"> <input id="site" name="site" type="hidden" value="heinz-frontdoor"> <input id="proxystylesheet" name="proxystylesheet" type="hidden" value="heinz_frontend"> <input id="sort" name="sort" type="hidden" value="date:D:L:d1"> <input id="start" name="start" type="hidden" value="0"><fieldset><legend class="show-for-sr">Search CMU Heinz</legend> <label class="show-for-sr" for="mobile-search">Search</label> <input class="global-search-mobile__text-input" id="mobile-search" name="q" placeholder="What are you looking for?" type="search"> <button aria-label="Search CMU Heinz College" class="global-search-mobile__button" tabindex="0" title="Search CMU Heinz College" type="submit"> <svg class="icon icon-triangle"><use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg> </button></fieldset></form>
+<ul class="primary-navigation clearfix no-bullet" id="js-primary-navigation">
+<li class="primary-navigation__list-item"><a class="primary-navigation__link" href="https://www.heinz.cmu.edu/about/" title="Dean's Welcome">About</a>
+<div class="primary-navigation__dropdown-menu-container">
+<ul class="primary-navigation__dropdown-menu no-bullet">
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/information-systems-management" title="School of Information Systems and Management">School of Information Systems &amp; Management</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/public-policy-management" title="School of Public Policy and Management">School of Public Policy &amp; Management</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/fine-arts" title="College of Fine Arts Joint Degree Programs">College of Fine Arts Joint Degree Programs</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/history" title="History">History</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/rankings" title="Rankings">Rankings</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/about/diversity" title="Diversity and Inclusion">Diversity &amp; Inclusion</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/contact/" title="Contact Us">Contact Us</a></li>
+</ul>
+</div>
+<button aria-label="Open" class="primary-navigation__dropdown-menu-trigger" title="Open"> <svg class="icon icon-plus"><use xlink:href="#icon-plus" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg><svg class="icon icon-minus"><use xlink:href="#icon-minus" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg> </button>
+<div class="primary-navigation__rectangle"></div>
+</li>
+<li class="primary-navigation__list-item"><a class="primary-navigation__link" href="https://www.heinz.cmu.edu/programs/index" title="Programs">Programs</a>
+<div class="primary-navigation__rectangle"></div>
+</li>
+<li class="primary-navigation__list-item"><a class="primary-navigation__link" href="https://www.heinz.cmu.edu/admissions/index" title="Admissions">Admissions</a>
+<div class="primary-navigation__rectangle"></div>
+</li>
+<li class="primary-navigation__list-item"><a class="primary-navigation__link" href="https://www.heinz.cmu.edu/faculty-research/index" title="Faculty and Research">Faculty &amp; Research</a>
+<div class="primary-navigation__dropdown-menu-container">
+<ul class="primary-navigation__dropdown-menu no-bullet">
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/faculty-research/profiles/index" title="Faculty Experts">Faculty Experts</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/faculty-research/our-faculty-in-the-news" title="Our Faculty In The News">Our Faculty In The News</a></li>
+<li class="primary-navigation__dropdown-menu-list-item"><a class="primary-navigation__dropdown-menu-link" href="https://www.heinz.cmu.edu/faculty-research/research-centers" title="Research Centers">Research Centers</a></li>
+</ul>
+</div>
+<button aria-label="Open" class="primary-navigation__dropdown-menu-trigger" title="Open"> <svg class="icon icon-plus"><use xlink:href="#icon-plus" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg><svg class="icon icon-minus"><use xlink:href="#icon-minus" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg> </button>
+<div class="primary-navigation__rectangle"></div>
+</li>
+<li class="primary-navigation__list-item"><a class="primary-navigation__link" href="https://www.heinz.cmu.edu/life-at-heinz/index" title="Life at Heinz College">Life at Heinz College</a>
+<div class="primary-navigation__rectangle"></div>
+</li>
+</ul>
+<ul class="secondary-navigation clearfix no-bullet">
+<li class="secondary-navigation__list-item"><a class="secondary-navigation__link" href="https://www.heinz.cmu.edu/employers-partners/index">Employers &amp; Corporate Partners</a></li>
+<li class="secondary-navigation__list-item"><a class="secondary-navigation__link" href="https://www.heinz.cmu.edu/alumni/index">Alumni</a></li>
+<li class="secondary-navigation__list-item"><a class="secondary-navigation__link" href="https://www.heinz.cmu.edu/current-students/index">Current Students</a></li>
+
+<div class="slide-menu-mask" id="js-slide-menu-mask" role="presentation"></div>
+    </div>
+</div>
+</header>
